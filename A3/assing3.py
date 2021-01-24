@@ -1,145 +1,142 @@
-
-
+def goToLivingRoom():
     
-# def goToLivingRoom():
+    ballofString = False
+    cheeseSelect = False
+    selection = " "
 
-#     livRoomSelect = " "
-#     ballSelect = " "
-#     atticSelect = " "
-#     cheeseSelect = " "
-#     # livingRoomMenuTwo = " "
+    if (ballofString == False):
+        selection = " "
+        while selection not in ("1", "2", "3", "4"):
+            print ("List of possible actions")
+            print ("(1) View the pot of soil")
+            print ("(2) Take the stairs up to the attic")                  
+            print ("(3) Go to Bedroom")
+            print ("(4) Ball of string")
+            selection = input("Enter your selection: ")
+            if selection not in ("1", "2", "3", "4"):
+                print("Please enter one of '1' or '2' or '3' or '4' ")
+            if (selection == "1"):
+                print("Looks dry")
+            if (selection == "2"):
+                print("You go to the attic")
+                ballofString, cheeseSelect = goToAttic(ballofString, cheeseSelect)
+            if (selection == "3"):
+                print("You go to the bedroom")
+            if (selection == "4"):
+                print("You observe the ball of string.")
+                ballofString = ballofYarn()
+        print("ball false")
 
-#     while livRoomSelect not in ("1", "2", "3", "4"):
-#         print("(1) View the pot of soil")
-#         print("(2) Take stairs up to the attic")
-#         print("(3) Take the dark entranceway")
-#         print("(4) Approach ball of string")
-#         livRoomSelect = input("Enter you selection: ")
+    if (ballofString == True):
+        
+        while selection not in ("1", "2", "3"):
+            print ("List of possible actions")
+            print ("(1) View the pot of soil")
+            print ("(2) Take the stairs up to the attic")                  
+            print ("(3) Go to Bedroom")
+            selection = input("Enter your selection: ")
+            if selection not in ("1", "2", "3"):
+                print("Please enter one of '1' or '2' or '3'")
+            if (selection == "1"):
+                print("Looks dry")
+            if (selection == "2"):
+                print("You go to the attic")
+                # 1st run - you decide to drop the string
+                # false, (true or false) =  gotoattic(true, either or (true or false))
 
-#         if livRoomSelect not in ("1", "2", "3", "4"):
-#             print("Please enter one of '1' or '2' or '3' or '4'\n")
-
-#         elif (livRoomSelect == "1"):
-#             print("The pot of soil looks dry, perhaps if its fertilized something will grow...\n")
-#             # make a yes or no statement
-
-#         elif (livRoomSelect == "2"):
-#             print("You take the creaky stairs into the attic\n")
-#             goToAttic(livRoomSelect, ballSelect, atticSelect, cheeseSelect)
-
-#         elif (livRoomSelect == "3"):
-#             print("You take the dark entaceway into the bedroom\n")
-
-#         elif (livRoomSelect == "4"):
-#             ballofString(livRoomSelect, atticSelect, cheeseSelect)
-
-#         # else: goToLivingRoom(ballSelect, livRoomSelect, atticSelect, cheeseSelect)
+                # 2nd run - What do you have?
+                # goToAttic(false, (true or false))
+                ballofString, cheeseSelect = goToAttic(ballofString, cheeseSelect)
+                selection = " "
+            if (selection == "3"):
+                print("You go to the bedroom")
+                selection = " "
+        print("Ball True")
 
 
-#     return (livRoomSelect, ballSelect)      
+
+def potOfSoil():
+    print("You observe the pot of soil")
     
-# def livingRoomMenuTwo(livRoomSelect ,ballSelect, atticSelect, cheeseSelect):
-
-#     while livRoomSelect not in ("1", "2", "3"):
-#         print("(1) View the pot of soil")
-#         print("(2) Take stairs up to the attic")
-#         print("(3) Take the dark entranceway")
-#         livRoomSelect = input("Enter you selection: ")
-
-#         if livRoomSelect not in ("1", "2", "3", "4"):
-#             print("Please enter one of '1' or '2' or '3' ")
-
-#         elif (livRoomSelect == "1"):
-#             print("The pot of soil looks dry, perhaps if its fertilized something will grow...\n")
-#             livingRoomMenuTwo(ballSelect, livRoomSelect, atticSelect, cheeseSelect)
-
-#         elif (livRoomSelect == "2"):
-#             print("You take the creaky stairs into the attic\n")
-#             goToAttic(livRoomSelect, ballSelect, atticSelect, cheeseSelect)
-
-#         elif (livRoomSelect == "3"):
-#             print("You take the creepy entaceway into the bedroom\n")
-
-#     return(livRoomSelect, ballSelect)
-
-# def ballofString(livRoomSelect, atticSelect, cheeseSelect):
-
-#     print("There is a ball of string, pick it up?\n")
-#     ballSelect = input("Take ball of string? (y/n): ")
-
-#     if (ballSelect == "y"):
-#         print("Picked up the ball of string!\n")
-#         livingRoomMenuTwo(ballSelect, livRoomSelect, atticSelect, cheeseSelect)
-#         return (True)
-
-#     elif (ballSelect == "n"):
-#         print("you've decided not to pick up the ball of string\n")
-#         return (False)
-
-# def goToAttic(livRoomSelect, ballSelect, atticSelect, cheeseSelect):
 
 
 
-#     print("You are in the attic.\n")
-#     while atticSelect not in ("1", "2", "3"):
-#         print("(1) There is a tiny hole here to the bedroom below... ")
-#         print("(2) There seems to be some cheese here... ")
-#         print("(3) Take the stairs down to the living room ")
-#         atticSelect = input("Enter your selection: ")
-
-#         if atticSelect not in ("1", "2", "3"):
-#             print("Please enter 1 or 2 or 3\n")
-
-#         elif (atticSelect == "1"):
-#             print("Upon further inspection, this hole overlooks the bedroom below. Maybe we could drop something in it?\n")
-#             goToAttic(livRoomSelect ,ballSelect, atticSelect, cheeseSelect)
-
-#         elif (atticSelect == "1") and (cheeseSelect == True):
-#             print("You try to drop the cheese down the hole but it's too big! Perhaps if there was another item we could dangle it with....\n")
-
-#         elif (atticSelect == "1") and (cheeseSelect == True) and (ballSelect == True):
-#             print("You tie the cheese to the string and drop it down the hole!.....The cat has been distracted and left the room!\n")
-#             goToAttic(livRoomSelect ,ballSelect, atticSelect, cheeseSelect)
-#             # needs cat distraction
-
-#         elif (atticSelect == "2"):
-#             cheeseSelect = cheeseFunction(livRoomSelect ,atticSelect, ballSelect, cheeseSelect)
-#             # if cheeseSelect == True
-
-#         elif (atticSelect == "3"):
-#             print("You've decided to go back to the living room.\n")
-#             goToLivingRoom()
-
-#         elif (atticSelect == "3") and (ballSelect == "y"):
-#             print("You've decided to go back to the living room.\n")
-#             livingRoomMenuTwo(ballSelect, livRoomSelect, atticSelect, cheeseSelect)
+def goToAttic(ballofString, cheeseSelect):
+    print("You are in the attic.")
+    print("There is a tiny hole to the bedroom below, maybe you could try dropping something.")
+    print("There is also unlimited supply of cheese....")
+    atticSelect = " "
+    while atticSelect not in ("1", "2", "3"):
+        print("(1) Take the stairs down to the living room ")
+        print("(2) Observe the cheese ")
         
 
-#     return (atticSelect, cheeseSelect)
-
-# def cheeseFunction(livRoomSelect ,atticSelect, ballSelect, cheeseSelect):
-
-#     print("This cheese could come in handy.\n")
-#     cheeseSelect = input("Pick up the cheese? (y/n): \n")
-#     if (cheeseSelect == "y"):
-#         print("You've decided to pick up some of the cheese!\n")
-#         return (True)
-
-#     elif (cheeseSelect == "n"):
-#         print("You've decided to not pick up the cheese.\n")
-#         return (False)
-
-#     # return(cheeseSelect, atticSelect)
-
-# def goToBedroom():
-#     print("You are in the bedroom.\n")
-
-# def start ():
-#     goToLivingRoom()
-
-# start()
-
-"HI YO"
-           
 
 
+        if (ballofString == True):
+            print("(3) - Drop the ball of string in the hole")
+
+        else:
+            print("(3) - Ponder on the hole....... ")
+            
+        
+        atticSelect = input("Enter your selection: ")
+
+        if atticSelect not in ("1", "2", "3"):
+            print("Please enter 1 or 2 or 3\n")
+
+
+        elif (atticSelect == "1"):
+            print("You've decided to go back to the living room.\n")
+            atticSelect = " "
+            return(ballofString, cheeseSelect)
+
+        elif (atticSelect == "2"):
+            print("Observing the cheese... there seems to be a lottttttt of cheese")
+            atticSelect = " "
+            cheeseSelect = cheeseFunction()
+
+        elif (atticSelect == "3") and (ballofString == True):
+            print("You have now distracted the cat in the bedroom!")
+            atticSelect = " "
+            ballofString = False
+
+        elif (atticSelect == "3"):
+            atticSelect = " "
+            print("Its tiny enough that you could try dropping some string....")
+            
+        
+
+def cheeseFunction():
+    print("This cheese could come in handy.\n")
+    cheeseSelect = input("Pick up the cheese? (y/n): \n")
+    if (cheeseSelect == "y"):
+        print("You've decided to pick up some of the cheese!\n")
+        return (True)
+
+    elif (cheeseSelect == "n"):
+        print("You've decided to not pick up the cheese.\n")
+        return (False)
+
+
+    # return(cheeseSelect, atticSelect)
+
+def goToBedroom():
+    print("You are in the bedroom")
+
+def ballofYarn():
+    print("You approach the ball of string\n")
+    ballofString=input("Pick up the ball of string? (y/n): ")
+
+    if (ballofString == "y"):
+        print("\nPicked up the ball of string.\n")
+        return(True)
+    else:
+        print ("\nLeft the ball of string in its place.\n")
+        return(False)
+
+def start():
+    goToLivingRoom()
+    print("nigeria")
+
+start()
