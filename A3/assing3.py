@@ -12,7 +12,7 @@ import time
 # and uses a living room menu selection input variable to call other functions/rooms.
 # The game is only won when the player views the soil after all conditions have met.
 # Conditions to meet to end game; distract the cat from the attic by using the string,
-# feeding the mouse some cheese so the soil is fertilized.
+# feeding the mouse some cheese so the soil is fertilized
 #
 def goToLivingRoom():           
     
@@ -22,6 +22,7 @@ def goToLivingRoom():
     mouseCheeseDecision = False
     selection = " "
     print("You are in the main living room...\n")
+    selection = " "
     if (ballofString == False):
         selection = " "
         while selection not in ("1", "2", "3", "4"):
@@ -39,6 +40,7 @@ def goToLivingRoom():
             if (selection == "2"):
                 print("\nYou go to the attic\n")
                 ballofString, cheeseSelect, catDistracted = goToAttic(ballofString, cheeseSelect, catDistracted)
+                selection = " "
             if (selection == "3"):
                 print("\nYou go to the bedroom\n")
                 goToBedroom(ballofString, cheeseSelect, catDistracted, mouseCheeseDecision)
@@ -46,7 +48,9 @@ def goToLivingRoom():
             if (selection == "4"):
                 print("\nYou observe the ball of string.\n")
                 ballofString = ballofYarn()
-
+                if (ballofString == False):
+                    selection = " "
+        print("Ball False")
     if (ballofString == True):
         
         while selection not in ("1", "2", "3"):
@@ -59,7 +63,8 @@ def goToLivingRoom():
                 print("Please enter one of '1' or '2' or '3'\n")
 
             if (selection == "1") and (mouseCheeseDecision == True):
-                print("\nVine growing out\n")
+                print("\nThe soil is rumbling...\n")
+                time.sleep(2)
                 return(None)
 
             if (selection == "1"):
@@ -75,6 +80,8 @@ def goToLivingRoom():
                 ballofString, cheeseSelect, catDistracted, mouseCheeseDecision = goToBedroom(ballofString, cheeseSelect, catDistracted, mouseCheeseDecision)
                 selection = " "
         print("\nBall True\n")
+
+    
 
 
 #
@@ -114,19 +121,21 @@ def goToAttic(ballofString, cheeseSelect, catDistracted):
             return(ballofString, cheeseSelect, catDistracted)
 
         elif (atticSelect == "2"):
-            print("Observing the cheese... there seems to be a lottttttt of cheese")
+            print("\nObserving the cheese... there seems to be a lottttttt of cheese\n")
             atticSelect = " "
             cheeseSelect = cheeseFunction()
 
         elif (atticSelect == "3") and (ballofString == True):
-            print("You have now distracted the cat in the bedroom!")
+            print("\nYou have now distracted the cat in the bedroom!\n")
             atticSelect = " "
             ballofString = False
             catDistracted = True
 
         elif (atticSelect == "3"):
             atticSelect = " "
-            print("Its tiny enough that you could try dropping some string....")
+            print("\njust your average super tiny hole overlooking the bedroom....(creepy)\n")
+    
+
            
 #       
 # The cheeseFunction() is called upon by goToAttic(). it determines wether the cheeseSelect flag will be met.
@@ -167,7 +176,8 @@ def goToBedroom(ballofString, cheeseSelect, catDistracted, mouseCheeseDecision):
 
 
         if(ballofString == True):
-            catInput = input("(2) Play with the cat using the string? (y/n): ")
+            print("There is a tomcat beside a mousehole watching it with great intent...")
+            catInput = input("Play with the cat using the string? (y/n): ")
             if (catInput == "y"):
                 print("\nThe cat briefly looks at you and looks at the mousehole again.\n")
                 bedroomSelect = " "
